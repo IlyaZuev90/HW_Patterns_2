@@ -12,7 +12,7 @@ import java.util.Locale;
 import static io.restassured.RestAssured.given;
 
 public class DataUserGenerator {
-    private static RequestSpecification requestSpecification = new RequestSpecBuilder()
+    private static final RequestSpecification requestSpecification = new RequestSpecBuilder()
             .setBaseUri("http://localhost")
             .setPort(9999)
             .setAccept(ContentType.JSON)
@@ -21,6 +21,7 @@ public class DataUserGenerator {
             .build();
 
     private static final Faker faker = new Faker(new Locale("en"));
+
     private DataUserGenerator() {
     }
 
@@ -43,15 +44,18 @@ public class DataUserGenerator {
         String password = faker.internet().password();
         return password;
     }
-    public static RegistrationUser getUser(String status){
-    RegistrationUser user = new RegistrationUser(getRandomLogin(), getRandomPassword(), status);
-    return user;
+
+    public static RegistrationUser getUser(String status) {
+        RegistrationUser user = new RegistrationUser(getRandomLogin(), getRandomPassword(), status);
+        return user;
     }
+
     public static RegistrationUser getRegisteredUser(String status) {
-    RegistrationUser user = getUser(status);
-    sendRequest(user);
-    return user;
+        RegistrationUser user = getUser(status);
+        sendRequest(user);
+        return user;
     }
+
     @Value
     public static class RegistrationUser {
         String login;
