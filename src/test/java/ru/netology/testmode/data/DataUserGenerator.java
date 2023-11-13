@@ -36,18 +36,15 @@ public class DataUserGenerator {
     }
 
     public static String getRandomLogin() {
-        String login = faker.name().username();
-        return login;
+        return faker.name().username();
     }
 
     public static String getRandomPassword() {
-        String password = faker.internet().password();
-        return password;
+        return faker.internet().password();
     }
 
     public static RegistrationUser getUser(String status) {
-        RegistrationUser user = new RegistrationUser(getRandomLogin(), getRandomPassword(), status);
-        return user;
+        return new RegistrationUser(getRandomLogin(), getRandomPassword(), status);
     }
 
     public static RegistrationUser getRegisteredUser(String status) {
