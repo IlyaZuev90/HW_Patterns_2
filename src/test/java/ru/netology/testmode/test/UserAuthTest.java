@@ -28,9 +28,7 @@ public class UserAuthTest {
         $("[data-test-id='login'] input").setValue(registeredUser.getLogin());
         $("[data-test-id='password'] input").setValue(registeredUser.getPassword());
         $("button.button").click();
-        $("h2")
-                .shouldBe(Condition.visible, Duration.ofSeconds(10))
-                .shouldHave(Condition.exactText("Личный кабинет"));
+        $("h2").shouldHave(Condition.exactText("Личный кабинет")).shouldBe(Condition.visible, Duration.ofSeconds(6));
 
     }
 
@@ -41,9 +39,7 @@ public class UserAuthTest {
         $("[data-test-id='login'] input").setValue(notRegisteredUser.getLogin());
         $("[data-test-id='password'] input").setValue(notRegisteredUser.getPassword());
         $("button.button").click();
-        $("[data-test-id='error-notification'] .notification__content")
-                .shouldBe(Condition.visible, Duration.ofSeconds(10))
-                .shouldHave(Condition.text("Ошибка! Неверно указан логин или пароль"));
+        $("[data-test-id='error-notification'] .notification__content").shouldHave(Condition.text("Ошибка! Неверно указан логин или пароль")).shouldBe(Condition.visible, Duration.ofSeconds(6));
     }
 
     @Test
@@ -53,9 +49,7 @@ public class UserAuthTest {
         $("[data-test-id='login'] input").setValue(blockedUser.getLogin());
         $("[data-test-id='password'] input").setValue(blockedUser.getPassword());
         $("button.button").click();
-        $("[data-test-id='error-notification'] .notification__content")
-                .shouldBe(Condition.visible, Duration.ofSeconds(10))
-                .shouldHave(Condition.text("Ошибка! Пользователь заблокирован"));
+        $("[data-test-id='error-notification'] .notification__content").shouldHave(Condition.text("Ошибка! Пользователь заблокирован")).shouldBe(Condition.visible, Duration.ofSeconds(6));
     }
 
     @Test
@@ -66,9 +60,7 @@ public class UserAuthTest {
         $("[data-test-id='login'] input").setValue(invalidLogin);
         $("[data-test-id='password'] input").setValue(registeredUser.getPassword());
         $("button.button").click();
-        $("[data-test-id='error-notification'] .notification__content")
-                .shouldBe(Condition.visible, Duration.ofSeconds(10))
-                .shouldHave(Condition.text("Ошибка! Неверно указан логин или пароль"));
+        $("[data-test-id='error-notification'] .notification__content").shouldHave(Condition.text("Ошибка! Неверно указан логин или пароль")).shouldBe(Condition.visible, Duration.ofSeconds(6));
     }
 
     @Test
@@ -79,8 +71,6 @@ public class UserAuthTest {
         $("[data-test-id='login'] input").setValue(registeredUser.getLogin());
         $("[data-test-id='password'] input").setValue(invalidPassword);
         $("button.button").click();
-        $("[data-test-id='error-notification'] .notification__content")
-                .shouldBe(Condition.visible, Duration.ofSeconds(10))
-                .shouldHave(Condition.text("Ошибка! Неверно указан логин или пароль"));
+        $("[data-test-id='error-notification'] .notification__content").shouldHave(Condition.text("Ошибка! Неверно указан логин или пароль")).shouldBe(Condition.visible, Duration.ofSeconds(6));
     }
 }
