@@ -12,7 +12,7 @@ import java.util.Locale;
 import static io.restassured.RestAssured.given;
 
 public class DataUserGenerator {
-    private static final RequestSpecification requestSpecification = new RequestSpecBuilder()
+    private static final RequestSpecification requestSpec = new RequestSpecBuilder()
             .setBaseUri("http://localhost")
             .setPort(9999)
             .setAccept(ContentType.JSON)
@@ -27,7 +27,7 @@ public class DataUserGenerator {
 
     private static void sendRequest(RegistrationUser user) {
         given()
-                .spec(requestSpecification)
+                .spec(requestSpec)
                 .body(user)
                 .when()
                 .post("/api/system/users")
